@@ -23,13 +23,21 @@ Python 3.7
 
 ## Usage
 
-1. Create a Virtual Environment and import the dependencies
-2. Execute main.py
+1. Create a Virtual Environment and install all the dependencies
+2. Execute emojis.py
+
+## Sreamlit App
+The [feature/use_streamlit](https://github.com/juanmadlg/Simple_Emojis_Generator/tree/feature/use_streamlit) branch of this repository include a simple
+web app build using the [Streamlit](https://www.streamlit.io/) framework. This 
+
+The usage in ths case is:
+
+1. Create a Virtual Environment and install all the dependencies
+2. Execute: steamlit run emojis.py 
+3. Your default browser will be automatically opened to show the app site
 
 ## Test
 This project does not include tests.
 
 ## Credits
 - Juanma de Luelmo Gomez ([@juanmadlg](http://twitter.com/juanmadlg))
-
-
