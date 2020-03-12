@@ -1,5 +1,10 @@
+import io
+
 import cv2
 import numpy as np
+import streamlit as st
+from PIL import Image
+
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, LeakyReLU, Reshape, Flatten
 from tensorflow.keras.optimizers import Adam
@@ -151,12 +156,15 @@ class GAN:
                 accuracies.append(100.0 * accuracy)
                 iteration_checkpoints.append(iteration + 1)
 
-                print(f"{iteration + 1} [D loss: {d_loss}, acc.: {100.0 * accuracy}] [G loss: {g_loss}]")
+                st.write(f"Iteration: {iteration + 1}:");
+                st.text(f"Discriminator loss: {d_loss}, acc.: {100.0 * accuracy}")
+                st.text(f"GAN loss: {g_loss}")
+
                 self._sample_images(iteration+1)
 
     def _sample_images(self, iteration):
         # Prepares 5 random vectors
-        z = np.random.normal(0, 1, (5, 100))
+        z = np.random.normal(0, 1, (8, 100))
 
         gen_imgs = self._generator.model.predict(z)
 
@@ -165,7 +173,11 @@ class GAN:
         gen_imgs = gen_imgs * 255
 
         index = 0
+        images = []
         for image in gen_imgs:
             file_name = f"output/{iteration}_{index}.png"
             cv2.imwrite(file_name, image[:, :, 0])
+            images.append(Image.open(file_name))
             index += 1
+
+        st.image(images)
