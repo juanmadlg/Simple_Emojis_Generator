@@ -1,0 +1,4 @@
+tensorflow==2.1.0
+opencv-python
+numpy==1.18.1
+pypng==0.0.20
